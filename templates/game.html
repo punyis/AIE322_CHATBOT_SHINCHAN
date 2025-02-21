@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME</title>
+    <link rel="stylesheet" href="static/game.css">
+</head>
+<body>
+
+<div id="chat-box">
+    <div id="chat-messages"></div>
+</div>
+
+<button onclick="startGame()">START</button>
+<a href="/" class="back-button">🔙 กลับหน้าแรก</a>
+<script>
+    let score = 0;  // เก็บคะแนน
+    let currentQuestion = 0;  // เก็บลำดับคำถามที่กำลังถามอยู่
+    let questions = [];  // ตัวแปรเก็บคำถามทั้งหมด
+
+    // ฟังก์ชั่นในการเริ่มเกม
+    function startGame() {
+        fetch("/get_questions")
+        .then(response => response.json())
+        .then(data => {
+            questions = data;  // เก็บคำถามทั้งหมด
+            score = 0;  // รีเซ็ตคะแนน
+            currentQuestion = 0;  // รีเซ็ตคำถาม
+            displayQuestion();  // แสดงคำถามแรก
+        });
+    }
+
+    // ฟังก์ชั่นแสดงคำถาม
+    function displayQuestion() {
+        let chatMessages = document.getElementById("chat-messages");
+
+        if (currentQuestion >= questions.length) {
+            // ถ้าคำถามหมดแล้ว แสดงคะแนนรวม
+            chatMessages.innerHTML += `<p class="chat-message bot-message"><strong>บอท:</strong> จบเกม! คะแนนรวมของคุณคือ: ${score} / ${questions.length}</p>`;
+            return;
+        }
+
+        let data = questions[currentQuestion];
+        chatMessages.innerHTML += `<p class="chat-message bot-message"><strong>บอท:</strong> คำถามที่ ${currentQuestion + 1}: ${data.question}</p>`;
+
+        // แสดงตัวเลือก
+        data.choices.forEach(choice => {
+            chatMessages.innerHTML += `<button onclick="checkAnswer('${choice}', '${data.answer}')">${choice}</button><br>`;
+        });
+
+        // เลื่อนข้อความไปที่ด้านล่าง
+        document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+    }
+
+    // ฟังก์ชั่นในการตรวจสอบคำตอบ
+    function checkAnswer(userChoice, correctAnswer) {
+        let chatMessages = document.getElementById("chat-messages");
+
+        // แสดงการเลือกของผู้ใช้
+        chatMessages.innerHTML += `<p class="chat-message user-message"><strong>คุณ:</strong> ${userChoice}</p>`;
+
+        // แสดงผลการตอบคำถาม
+        if (userChoice === correctAnswer) {
+            score++;  // เพิ่มคะแนน
+            chatMessages.innerHTML += `<p class="chat-message bot-message"><strong>บอท:</strong> ✅ ถูกต้อง!</p>`;
+        } else {
+            chatMessages.innerHTML += `<p class="chat-message bot-message"><strong>บอท:</strong> ❌ ผิด! คำตอบที่ถูกต้องคือ: ${correctAnswer}</p>`;
+        }
+
+        currentQuestion++;  // เลื่อนคำถามไปยังข้อถัดไป
+        displayQuestion();  // แสดงคำถามถัดไป
+    }
+</script>
+
+</body>
+</html>

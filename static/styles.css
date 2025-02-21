@@ -1,0 +1,109 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #a3fb6f;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.pinimg.com/736x/67/61/7d/67617da1d12eebde4a9134ad593f249a.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: 50px auto;
+    border: 5px solid #040404;
+    background-color: #ff4a4a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h2 {
+    color: #fefefe;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 5px solid #040404;
+    background-color: #fff3e0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.input-container {
+    display: flex;
+    margin-top: 15px;
+}
+
+#user-message {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 5px solid #000000;
+    margin-right: 10px;
+    background-color: #f1fc72;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    background-color: #52bc4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #ecfa22;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message {
+    background-color: #faff74;
+    color: rgb(0, 0, 0);
+    align-self: flex-end;  /* ข้อความของผู้ใช้ไปทางขวา */
+    text-align: right;   /* ข้อความของผู้ใช้ไปทางขวา */
+}
+
+.bot-message {
+    background-color: #a4d9ff;
+    color: #333;
+    align-self: flex-start;  /* ข้อความของบอทไปทางซ้าย */
+    text-align: left;        /* ทำให้ข้อความจัดไปทางซ้าย */
+}
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4a4a; /* สีพื้นหลัง */
+    color: white;  /* สีข้อความ */
+    text-decoration: none;  /* ลบขีดเส้นใต้ */
+    border-radius: 8px;  /* มุมปุ่มโค้ง */
+    border: 2px solid #040404;  /* กรอบของปุ่ม */
+    font-size: 16px;  /* ขนาดตัวอักษร */
+    font-weight: bold;  /* ทำให้ตัวอักษรหนาขึ้น */
+    transition: all 0.3s ease;  /* เอฟเฟกต์ในการเปลี่ยนแปลง */
+}
+
+.back-button:hover {
+    background-color: #ecfa22; /* เปลี่ยนสีเมื่อโฮเวอร์ */
+    color: #333;  /* เปลี่ยนสีข้อความเมื่อโฮเวอร์ */
+    transform: translateY(-3px);  /* ยกปุ่มขึ้นเล็กน้อยเมื่อโฮเวอร์ */
+}
+
+.back-button:active {
+    transform: translateY(2px);  /* ยุบปุ่มลงเมื่อคลิก */
+}

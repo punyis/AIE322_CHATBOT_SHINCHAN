@@ -1,0 +1,57 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #a3fb6f;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://p16-va.lemon8cdn.com/tos-alisg-v-a3e477-sg/oYeRjAAIYBGO7EmeJaXQAxMz2fT2ykAQIY8fAI~tplv-tej9nj120t-origin.webp');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 50px;
+    color: #000000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+p {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-top: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    margin: 20px;
+    background-color: #ff5e5e;
+    color: #fff;
+    border: 2px solid #d02d2d;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ec2929;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #b22a2a;
+}
+
+a {
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
